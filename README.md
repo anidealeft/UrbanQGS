@@ -1,7 +1,6 @@
 # UrbanQGS: Large-Scale Urban Surface Reconstruction via Analytic Curvature Consistency in Quadratic Gaussian Splatting
 
-> A curvature-driven quadratic Gaussian splatting framework for high-fidelity, compact, and scalable urban surface reconstruction from UAV imagery.
-
+> The code will coming soon...
 ![UrbanQGS teaser](001.png)
 
 ## Overview
