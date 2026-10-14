@@ -37,9 +37,9 @@ UrbanQGS uses the **analytic Gaussian curvature** of quadratic Gaussian primitiv
 
 ## Experimental Results
 
-![UrbanQGS teaser](assets/result1.png)
+![UrbanQGS teaser](/result1.png)
 
-![UrbanQGS teaser](assets/result2.png)
+![UrbanQGS teaser](/result2.png)
 
 UrbanQGS is evaluated on large-scale urban reconstruction benchmarks including **GauU-Scene**, **MatrixCity**, and a custom large-scale UAV dataset.
 
