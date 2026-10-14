@@ -18,7 +18,7 @@ UrbanQGS uses the **analytic Gaussian curvature** of quadratic Gaussian primitiv
 
 ## Key Features
 
-![UrbanQGS teaser](assets/partition.png)
+![UrbanQGS teaser](/partition.png)
 
 - **Quadratic Gaussian primitives**  
   Uses second-order surface primitives to better model curved and fine-grained urban geometry.
