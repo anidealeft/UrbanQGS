@@ -1,0 +1,77 @@
+defaults:
+  - ./base.yaml
+
+skip_train: False
+skip_test: False
+skip_mesh: False
+skip_cull: False
+render_path: False
+# case_name: Barn
+# case_name: Truck
+# case_name: Caterpillar
+# case_name: Ignatius
+# case_name: Meetingroom
+case_name: rusbuild
+#root_dir: ""
+root_dir: /home/admin2/dataset/gauu/COLMAP_RESULT/CUHK_UPPER_CAMPUS_COLMAP/part/block_6
+
+
+pipeline:
+  # num_cluster: 1
+  # depth_ratio: 1.0
+  # mesh_res: 1024
+  # voxel_size: 0.004
+  # sdf_trunc: 0.016
+  # depth_trunc: 3.5
+
+  num_cluster: 1
+  depth_ratio: 0.0
+  mesh_res: 1024
+  voxel_size: 0.01
+  sdf_trunc: 0.04
+  depth_trunc: 2.0
+  occlusion_awared_denom: false
+dataset:
+  use_alpha: False
+  eval: False
+  downsample: 0.2926
+  type: all
+  ncc_scale: ${dataset.downsample}
+  metric3d_normal_root: /home/admin2/dataset/gauu/COLMAP_RESULT/CUHK_UPPER_CAMPUS_COLMAP/mono_normals_undistorted_0.2926
+  metric3d_depth:  /home/admin2/dataset/gauu/COLMAP_RESULT/CUHK_UPPER_CAMPUS_COLMAP/mono_depths
+
+optimizer:
+  iterations: 30000
+  position_lr_max_steps: 30000
+  densification_interval: 600
+  opacity_reset_interval: 6000
+  densify_from_iter: 4000
+  multi_view_weight_from_iter: 25000
+  normal_from_iter: 20000
+  dist_from_iter: 15000
+  depth_from: 0
+  densify_until_iter: 20000
+  percent_dense: 0.0001
+  multi_view_ncc_weight: 0.0 # 0.15
+  multi_view_geo_weight: 0.0
+  densify_grad_threshold: 0.2
+  curvature_clamp_threshold: -5.0
+  lambda_dist: 0.0
+  reset_opacity_densify_delay: 1
+  lambda_normal: 0.05
+  lambda_metric_normal: 0.05
+  lambda_depth_init: 0.005
+
+
+model_path: /home/admin2/dataset/gauu/COLMAP_RESULT/CUHK_UPPER_CAMPUS_COLMAP/PART-6/${pipeline.depth_ratio}_${optimizer.densify_grad_threshold}_CurvClamp=-5.0_Dist=0.0_Percendent=0.0001_multi_view_ncc_weight=0.0_lambda_normal=0.05_New_densifyInterval=600_normalFrom30000_densifyUntil48000_woMulti
+# path to pre-trained model
+load_model_path: ${model_path}
+# load_model_path: ${root_dir}/${case_name}/exp/DepthRatio=1.0_DensifyGrad=0.1_CurvClamp=0.0_Dist=10.0_Percendent=0.0005_Train_Realease_ReTest_normalFrom30000
+
+# eval mesh
+# dataset_GT_path: the path to directory containing xxx_trans.txt, xxx.ply, xxx.json, xxx_COLMAP_SfM.log
+#dataset_GT_path: /home/zzy_group/data/public_data/TNT_GOF/GT/${case_name}
+#traj_path: ${root_dir}/${case_name}_COLMAP_SfM.log
+# mesh_ply_path: the path to directory containing mesh to evaluate
+mesh_ply_path: ${load_model_path}/train/ours_30000/fuse_post.ply
+eval_output_path: ${load_model_path}/train/ours_30000
