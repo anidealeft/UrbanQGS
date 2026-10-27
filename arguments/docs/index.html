@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="UrbanQGS: large-scale urban surface reconstruction via analytic curvature consistency in quadratic Gaussian splatting.">
+  <title>UrbanQGS | Large-Scale Urban Surface Reconstruction</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#top">UrbanQGS</a>
+      <div class="nav-links"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#results">Results</a><a href="#citation">Citation</a></div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero container">
+      <p class="eyebrow">Large-scale urban surface reconstruction</p>
+      <h1>UrbanQGS</h1>
+      <p class="hero-title">Large-Scale Urban Surface Reconstruction via Analytic Curvature Consistency in Quadratic Gaussian Splatting</p>
+      <p class="authors">Yuanhang Cheng · Zhe Yang · Juan Lei · Jisheng Chu · Wenrui Li · Zheng Xu · Zhuo Chen · Gang Chen</p>
+      <p class="publication"><a href="https://doi.org/10.1016/j.isprsjprs.2026.09.044">ISPRS Journal of Photogrammetry and Remote Sensing</a><br>Volume 243 · 2027 · Pages 331–350</p>
+      <p class="hero-copy">A curvature-driven framework for reconstructing complete, detailed, and compact urban surfaces from UAV imagery.</p>
+      <div class="hero-actions"><a class="button primary" href="https://github.com/anidealeft/UrbanQGS">Code</a><a class="button secondary" href="https://www.sciencedirect.com/science/article/pii/S0924271626004910">Paper</a></div>
+      <figure class="hero-demo">
+        <video class="hero-video" controls playsinline preload="metadata" aria-label="SMBU-MESH: UrbanQGS mesh reconstruction demonstration" aria-describedby="video-caption">
+          <source src="assets/SMBU-MESH.mp4" type="video/mp4">
+          Your browser does not support embedded video. <a href="assets/SMBU-MESH.mp4">Download the SMBU-MESH video</a>.
+        </video>
+        <figcaption id="video-caption"><strong>SMBU-MESH</strong> · UrbanQGS mesh reconstruction</figcaption>
+      </figure>
+      <img class="hero-image" src="assets/001.png" alt="UrbanQGS urban reconstruction teaser" loading="lazy">
+    </section>
+
+    <section class="section container narrow" id="abstract">
+      <p class="section-kicker">Abstract</p>
+      <h2>Reconstructing urban geometry at city scale</h2>
+      <p>Large-scale 3D surface reconstruction at the city scale from UAV imagery is a core task for building digital-twin cities. Although 3D Gaussian Splatting (3DGS) and its variants have achieved remarkable progress in radiance-field reconstruction, existing methods still struggle with scale-varying structural complexity and diverse urban textures: geometry is often incomplete in low-frequency, weak-texture regions over large areas, while in high-frequency regions with intricate details, disordered primitive distributions tend to cause floating artifacts and outliers.</p>
+      <p>To address these issues, we propose <strong>UrbanQGS</strong>, a large-scale urban reconstruction framework built on quadratic Gaussian splatting. We inherit quadratic surface Gaussians as scene primitives and use their analytic curvature as the central driving signal to perform a two-stage geometric refinement: (1) A self-supervised geometric constraint based on cross-view curvature consistency, which effectively fills geometric holes in weak-texture planar regions. (2) A curvature-aware adaptive representation allocation strategy that reweights, recalibrates, and ranks densification gradients, guiding split and clone operations toward geometrically complex regions while standard pruning removes redundant primitives.</p>
+      <p>In addition, we integrate a monocular normal prior to correct global orientation drift during large-scale reconstruction. We further assess the compatibility of UrbanQGS with partitioned large-scene reconstruction using a visibility-aware block-wise protocol with hardware-constrained per-block budgets. The blocks are trained sequentially on a single GPU. Experiments on large-scale UAV datasets demonstrate that, compared with state-of-the-art 3DGS-based large-scale reconstruction methods, UrbanQGS maintains superior geometric quality while substantially reducing redundant Gaussians and mesh complexity, yielding finer and more complete geometric structures, while qualitative results on our custom-collected dataset indicate its compatibility with a partitioned large-scene reconstruction pipeline.</p>
+    </section>
+
+    <section class="section container" id="method">
+      <div class="section-heading"><div><p class="section-kicker">How it works</p><h2>Curvature as a geometric signal</h2></div><p class="section-intro">UrbanQGS combines quadratic surface Gaussians with curvature-aware optimization to improve both completeness and efficiency.</p></div>
+      <img class="wide-image" src="assets/overview.png" alt="UrbanQGS framework overview">
+      <div class="feature-grid">
+        <article><span class="feature-number">01</span><h3>Cross-view consistency</h3><p>A self-supervised geometric constraint uses curvature-consistent neighboring views to fill holes in weak-texture planar regions.</p></article>
+        <article><span class="feature-number">02</span><h3>Adaptive allocation</h3><p>Curvature reweights, recalibrates, and ranks densification gradients, directing split and clone operations to complex geometry.</p></article>
+        <article><span class="feature-number">03</span><h3>Global orientation</h3><p>A monocular normal prior helps correct orientation drift during large-scale reconstruction.</p></article>
+        <article><span class="feature-number">04</span><h3>Partitioned training</h3><p>Visibility-aware block-wise training supports large scenes with hardware-constrained per-block budgets on a single GPU.</p></article>
+      </div>
+    </section>
+
+    <section class="section soft" id="results">
+      <div class="container"><p class="section-kicker">Qualitative results</p><h2>Finer structures with fewer redundant primitives</h2><p class="section-intro">UrbanQGS maintains strong geometric quality across large urban scenes while reducing floating artifacts and unnecessary representation growth.</p><img class="wide-image" src="assets/result1.png" alt="UrbanQGS qualitative comparison"><img class="wide-image result-gap" src="assets/result2.png" alt="UrbanQGS mesh comparison across scenes"></div>
+    </section>
+
+    <section class="section container" id="partition"><div class="section-heading"><div><p class="section-kicker">Large-scene pipeline</p><h2>Designed for partitioned reconstruction</h2></div><p class="section-intro">A visibility-aware protocol divides large scenes into manageable blocks, trains them sequentially, and merges the extracted geometry.</p></div><img class="wide-image" src="assets/partition.png" alt="UrbanQGS block-wise reconstruction pipeline"></section>
+
+    <section class="section container metrics"><p class="section-kicker">Selected results</p><h2>Quantitative evaluation</h2><div class="metric-grid"><div><strong>27.84</strong><span>PSNR on MatrixCity-Aerial</span></div><div><strong>0.695</strong><span>F1 on MatrixCity-Aerial</span></div><div><strong>7.61M</strong><span>Gaussians on LFLS</span></div><div><strong>1.22 dB</strong><span>average PSNR gain over CityGSV2</span></div></div></section>
+
+    <section class="section citation-section" id="citation"><div class="container narrow"><p class="section-kicker">Citation</p><h2>If you find UrbanQGS useful</h2><pre><code>@article{CHENG2027331,
+  title = {UrbanQGS: Large-scale urban surface reconstruction via analytic curvature consistency in quadratic Gaussian splatting},
+  journal = {ISPRS Journal of Photogrammetry and Remote Sensing},
+  volume = {243},
+  pages = {331-350},
+  year = {2027},
+  issn = {0924-2716},
+  doi = {10.1016/j.isprsjprs.2026.09.044},
+  url = {https://www.sciencedirect.com/science/article/pii/S0924271626004910},
+  author = {Yuanhang Cheng and Zhe Yang and Juan Lei and Jisheng Chu and Wenrui Li and Zheng Xu and Zhuo Chen and Gang Chen},
+  keywords = {Quadratic Gaussian splatting, Large-scale urban scenes, Analytic curvature, Surface reconstruction}
+}</code></pre></div></section>
+  </main>
+  <footer class="footer"><div class="container"><span>UrbanQGS</span><span>Large-scale urban surface reconstruction with quadratic Gaussian splatting</span></div></footer>
+</body>
+</html>
