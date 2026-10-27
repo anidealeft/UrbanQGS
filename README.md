@@ -1,11 +1,10 @@
 # UrbanQGS: Large-Scale Urban Surface Reconstruction via Analytic Curvature Consistency in Quadratic Gaussian Splatting
 
-> The code will coming soon...
 ![UrbanQGS teaser](/docs/assets/001.png)
 
 ## Overview
 
-![UrbanQGS teaser](/overview.png)
+![UrbanQGS teaser](/docs/assets/overview.png)
 
 **UrbanQGS** is a large-scale urban surface reconstruction framework built on **Quadratic Gaussian Splatting (QGS)**. It targets city-scale UAV photogrammetry scenarios where existing Gaussian-splatting-based reconstruction methods often struggle with:
 
@@ -18,7 +17,7 @@ UrbanQGS uses the **analytic Gaussian curvature** of quadratic Gaussian primitiv
 
 ## Key Features
 
-![UrbanQGS teaser](assets/partition.png)
+![UrbanQGS teaser](/docs/assets/partition.png)
 
 - **Quadratic Gaussian primitives**  
   Uses second-order surface primitives to better model curved and fine-grained urban geometry.
@@ -37,9 +36,9 @@ UrbanQGS uses the **analytic Gaussian curvature** of quadratic Gaussian primitiv
 
 ## Experimental Results
 
-![UrbanQGS teaser](assets/result1.png)
+![UrbanQGS teaser](/docs/assets/result1.png)
 
-![UrbanQGS teaser](assets/result2.png)
+![UrbanQGS teaser](/docs/assets/result2.png)
 
 UrbanQGS is evaluated on large-scale urban reconstruction benchmarks including **GauU-Scene**, **MatrixCity**, and a custom large-scale UAV dataset.
 
@@ -114,10 +113,16 @@ This work builds on recent progress in 3D Gaussian Splatting, 2D Gaussian Splatt
 If you find this project useful, please cite:
 
 ```bibtex
-@article{cheng2025urbanqgs,
-  title   = {UrbanQGS: Large-Scale Urban Surface Reconstruction via Analytic Curvature Consistency in Quadratic Gaussian Splatting},
-  author  = {Cheng, Yuanhang and Yang, Zhe and Lei, Juan and Chu, Jisheng and Li, Wenrui and Xu, Zheng and Chen, Zhuo and Chen, Gang},
-  journal = {Preprint},
-  year    = {2025}
+@article{CHENG2027331,
+title = {UrbanQGS: Large-scale urban surface reconstruction via analytic curvature consistency in quadratic Gaussian splatting},
+journal = {ISPRS Journal of Photogrammetry and Remote Sensing},
+volume = {243},
+pages = {331-350},
+year = {2027},
+issn = {0924-2716},
+doi = {https://doi.org/10.1016/j.isprsjprs.2026.09.044},
+url = {https://www.sciencedirect.com/science/article/pii/S0924271626004910},
+author = {Yuanhang Cheng and Zhe Yang and Juan Lei and Jisheng Chu and Wenrui Li and Zheng Xu and Zhuo Chen and Gang Chen},
+keywords = {Quadratic Gaussian splatting, Large-scale urban scenes, Analytic curvature, Surface reconstruction}
 }
 ```
