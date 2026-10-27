@@ -1,7 +1,7 @@
 # UrbanQGS: Large-Scale Urban Surface Reconstruction via Analytic Curvature Consistency in Quadratic Gaussian Splatting
 
 > The code will coming soon...
-![UrbanQGS teaser](001.png)
+![UrbanQGS teaser](/docs/assets/001.png)
 
 ## Overview
 
